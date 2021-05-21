@@ -11,16 +11,13 @@ import com.example.demo.repository.UserRepository;
 
 public class Resume_Home {
 	
-	@GetMapping("/") //juste afficher la page
+	@GetMapping("/") //juste afficher la page // "XXXX" == nom qu'on veut afficher dans l'url
 	public String Home() {
 		return "home";   //page par défault
 	}
 	
-	@GetMapping("/")
-	@RequestMapping(value="/XXX", method = RequestMethod.GET) /* == @GetMapping("/")*/
-	
-	@PostMapping("/XXX")
-	@RequestMapping(value="/XXX", method = RequestMethod.POST) /* == @PostMapping("/")*/
+	@GetMapping("/") == @RequestMapping(value="/XXX", method = RequestMethod.GET)
+	@PostMapping("/XXX") == @RequestMapping(value="/XXX", method = RequestMethod.POST)
 	
 	public String Ajout(@Validated User user, BindingResult bindingResult) { //bind si erreur
 	if(bindingResult.hasErrors()) {
@@ -41,13 +38,15 @@ public class Resume_Home {
 								
 								
 		//Formulaire
-	<form class="form_user flex-col-center" method="post" th:action="@{/ajout}" th:object="${user}"> // Thymeleaf 
-		//Id
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) // == y s'en occupe pas
-	private int id;
-	@Column(name="nom") // == alias en sql
-	private String nom;
-}
+	<form method="post" th:action="@{/ajout}" th:object="${user}"> // Thymeleaf 
+	
+	
+	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
+	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
+	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
+	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
+	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
+
 	
 	
 	
@@ -66,6 +65,25 @@ public class Resume_Home {
 			return "user/form";
 		}
 	
+	//			JPA
+	package com.example.demo.model;
+
+	import javax.persistence.Column;
 	
+	@Entity //== Analysé pour interagire avec la DB
+	public class User {
+
+		@Id // == informer clé primaire
+		@GeneratedValue(strategy = GenerationType.IDENTITY) // == y s'en occupe pas  parenthese ????????
+		private int id;
+		@Column(name="nom") // == alias en sql
+		private String nom;
+		private String prenom;
+		
+		
+		public User() {super();	}
+
+		
+	}
 
 		
