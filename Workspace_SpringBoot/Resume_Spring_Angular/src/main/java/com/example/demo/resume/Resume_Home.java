@@ -1,6 +1,8 @@
 package com.example.demo.resume;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,7 @@ public class Resume_Home {
 	
 	@GetMapping("/") //juste afficher la page // "XXXX" == nom qu'on veut afficher dans l'url
 	public String Home() {
-		return "home";   //page par défault
+		return "home";   //va chercher ce nom de html dans template
 	}
 	
 	@GetMapping("/") == @RequestMapping(value="/XXX", method = RequestMethod.GET)
@@ -29,23 +31,20 @@ public class Resume_Home {
 		
 		
 		
-		@ResponseBody	
+		@ResponseBody	//Ne va pas chercher un template qui a ce nom.... 
+	//...mais considérer le contenu comme la Vue elle-meme
 }
 	
 	
 	
 				//				Partie html
 								
-								
+	<html xmlns:th="http://www.thymeleaf.org/"> //pour utiliser thymeleaf // th == alias
+	
 		//Formulaire
 	<form method="post" th:action="@{/ajout}" th:object="${user}"> // Thymeleaf 
+			//@ envoi de données   		$ recup données
 	
-	
-	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
-	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
-	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
-	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
-	POURQUOI @ ET $ ??????  QUEL EST LA DIFFERENCE ???????
 
 	
 	
@@ -54,9 +53,9 @@ public class Resume_Home {
 	
 @ResponseBody	
 	
-@Autowired UserRepository userRepository;         	????  Autowire
+@Autowired UserRepository userRepository;         	????  Autowire   Fait le new automatiquement ???
 
-	public String Ajout(Model model) {				????  Model
+	public String Ajout(Model model) {	Model == session			????  Model
 		model.addAttribute("user", new User());
 	}
 	public String Ajout(@Validated User user, BindingResult bindingResult) {    ???? Validated     	
@@ -86,4 +85,8 @@ public class Resume_Home {
 		
 	}
 
+	public interface UserRepository extends JpaRepository<User, Long> {}
+	
+	POURQUOI UNE INTERFACE SANS @Override et POURQUOI CE EXTENDS ?
+			C EST A L ENVERS ???!!!
 		

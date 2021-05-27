@@ -2,6 +2,10 @@
 
 body{
 	background: black;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .flex-row{
 	display: flex;
@@ -29,12 +33,19 @@ body{
 	margin: 5em 10em;
 	padding: 5em;
 	width: 40em;
-	background: darkorange;
+	background: midnightblue;
+}
+.listeRead{
+	margin: 5em 10em;
+	padding: 5em;
+	width: 40em;
+	background: midnightblue;
+	text-align: center;
 }
 
-
-
-
+#sommaire_boutons a{
+	margin: 10px;
+}
 
 
 
