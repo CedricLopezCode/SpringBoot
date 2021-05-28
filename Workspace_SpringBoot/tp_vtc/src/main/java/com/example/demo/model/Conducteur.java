@@ -18,15 +18,15 @@ public class Conducteur {
 	private Long id_conducteur;
 	private String prenom;
 	private String nom;
-	
+	/*
 	@ManyToMany
 	@JoinTable(
 		name= "association_vehicule_conducteur",
 		joinColumns = {@JoinColumn(name="conducteur")},
 		inverseJoinColumns = {@JoinColumn(name="vehicule")}
 	)
-	private List<Vehicule> vehicule;
-	
+	private List<Vehicule> vehicules;
+	*/
 	
 	public Conducteur() {
 		super();
@@ -43,28 +43,28 @@ public class Conducteur {
 		this.prenom = prenom;
 		this.nom = nom;
 	}
-	public Conducteur(Long id_conducteur, String prenom, String nom, List<Vehicule> vehicule) {
+	public Conducteur(Long id_conducteur, String prenom, String nom, List<Vehicule> vehicules) {
 		super();
 		this.id_conducteur = id_conducteur;
 		this.prenom = prenom;
 		this.nom = nom;
-		this.vehicule = vehicule;
+		//this.vehicules = vehicules;
 	}
 
 
-	public List<Vehicule> getVehicules() {
-		return vehicule;
+	/*public List<Vehicule> getVehicules() {
+		return vehicules;
 	}
 
 
 	public void setVehicules(List<Vehicule> vehicules) {
-		this.vehicule = vehicule;
+		this.vehicules = vehicules;
 	}
 
 
 	public Long getId_conducteur() {
 		return id_conducteur;
-	}
+	}*/
 
 
 	public void setId_conducteur(Long id_conducteur) {

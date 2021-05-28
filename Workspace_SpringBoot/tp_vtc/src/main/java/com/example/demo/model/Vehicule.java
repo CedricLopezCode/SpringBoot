@@ -18,8 +18,8 @@ public class Vehicule {
 	private String couleur;
 	private String immatriculation;
 	
-	@ManyToMany(mappedBy = "association_vehicule_conducteur")
-	private List<Conducteur> conducteur;
+	//@ManyToMany(mappedBy = "vehicules")
+	//private List<Conducteur> conducteurs;
 	
 	public Vehicule() {
 		super();
@@ -39,14 +39,14 @@ public class Vehicule {
 	}
 	
 	public Vehicule(Long id_vehicule, String marque, String modele, String couleur, String immatriculation,
-			List<Conducteur> conducteur) {
+			List<Conducteur> conducteurs) {
 		super();
 		this.id_vehicule = id_vehicule;
 		this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
 		this.immatriculation = immatriculation;
-		this.conducteur = conducteur;
+		//this.conducteurs = conducteurs;
 	}
 	
 	public Long getId_vehicule() {
@@ -79,24 +79,28 @@ public class Vehicule {
 	public void setImmatriculation(String immatriculation) {
 		this.immatriculation = immatriculation;
 	}
-	
-	public List<Conducteur> getConducteur() {
-		return conducteur;
+	/*
+	public List<Conducteur> getConducteurs() {
+		return conducteurs;
 	}
-	public void setConducteur(List<Conducteur> conducteur) {
-		this.conducteur = conducteur;
-	}
+	public void setConducteurs(List<Conducteur> conducteurs) {
+		this.conducteurs = conducteurs;
+	}*/
 	@Override
 	public String toString() {
 		return "Vehicule [id_vehicule=" + id_vehicule + ", marque=" + marque + ", modele=" + modele + ", couleur="
 				+ couleur + ", immatriculation=" + immatriculation + ", association_vehicule_conducteur="
-				+ conducteur + "]";
+				+ /*conducteurs +*/ "]";
 	}
 	public String toStringResume() {
 		return  id_vehicule +" "+ marque +" "+ modele +" "+ couleur +" "+ immatriculation ;
 	}
 	
-	
+	/*
+	public String toStringResume() {
+		return "Assoc: "+id_association +"\nConducteur: "+  conducteur.toStringResume() +"\nVehicule "+ vehicule.toStringResume();
+	}
+	*/
 	
 	
 	
