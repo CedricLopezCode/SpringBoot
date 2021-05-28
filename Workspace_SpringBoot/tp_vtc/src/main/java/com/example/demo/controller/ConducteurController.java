@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.model.Conducteur;
 import com.example.demo.repository.ConducteurRepository;
 
+
 @Controller
 public class ConducteurController {
 
@@ -28,8 +29,8 @@ public class ConducteurController {
 	}
 	
 	//RRRRRRRRRRRRRRRRRRRRRRRR
-	@GetMapping("/pageConducteur")	// RRR
-	public String readAllConducteurs(Model model) {
+	@GetMapping("/pageconducteur")	// RRR
+	public String readAllconducteurs(Model model) {
 		model.addAttribute("allConducteurs", conducteurRepository.findAll());
 		return "conducteur/conducteur";
 	}

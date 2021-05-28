@@ -1,0 +1,55 @@
+<div th:replace="fragment/header::header"></div>
+<div th:replace="fragment/navbar::navbar"></div>
+
+<h1>Liste Vehicules</h1>
+	
+<div id="table_vehicule">
+	<table class="listeRead">
+		<tr>
+			<th>Id_Vehicule</th>
+			<th>Marque</th>
+			<th>Modele</th>
+			<th>Couleur</th>
+			<th>Immatriculation</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+		</tr>
+		<tr th:each="vehicule:${allVehicules}">
+			<td th:text="${vehicule.id_vehicule}"></td>
+			<td th:text="${vehicule.marque}"></td>
+			<td th:text="${vehicule.modele}"></td>
+			<td th:text="${vehicule.couleur}"></td>
+			<td th:text="${vehicule.immatriculation}"></td>
+			<td><a class="btn btn-warning" th:href="@{/updateVehicule/{id}(id=${vehicule.id_vehicule})}">
+				<img src="Paint_icon-icons.com_55521.png">
+			</a></td>
+			<td><a class="btn btn-danger" th:href="@{/deleteVehicule/{id}(id=${vehicule.id_vehicule})}">
+				<img src="19384-bubka-TrashEmpty_vista.png">
+			</a></td>
+		</tr>
+	</table>
+</div>
+
+<form class="form_user flex-col-center" method="post" th:action="@{/ajoutVehicule}" th:object="${vehicule}">
+	<input type="hidden" class="form-control" name="id_vehicule">
+	<div class="mb-3">
+		<label class="form-label">Marque</label>
+		<input type="text" class="form-control" name="marque">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Modele</label>
+		<input type="text" class="form-control"  name="modele">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Couleur</label>
+		<input type="text" class="form-control" name="couleur">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Immatriculation</label>
+		<input type="text" class="form-control"  name="immatriculation">
+	</div>
+	<button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+	
+	
+<div th:replace="fragment/footer::footer"></div>
