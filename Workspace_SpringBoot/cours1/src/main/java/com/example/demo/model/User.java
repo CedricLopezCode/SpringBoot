@@ -1,19 +1,36 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+
 
 @Entity
 public class User {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name="nom")
+	private Long id;
+	
 	private String nom;
 	private String prenom;
+	
+	/*@OneToMany //car 1 User peut écrire plusieurs articles (cas bidirectionnel)
+	private Article article; */
+	
+	@ManyToMany
+	@JoinTable(name="user_roles", 
+		joinColumns = {@JoinColumn(name="user")},
+		inverseJoinColumns = {@JoinColumn(name="role")}
+	)
+	private List<Role> roles;
+	
 	
 	
 	public User() {
@@ -26,12 +43,26 @@ public class User {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
+	
+	public User(String nom, String prenom, List<Role> roles) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.roles = roles;
+	}
 
+	public List<Role> getRoles() {
+		return roles;
+	}
 
-	public int getId() {
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNom() {
@@ -46,5 +77,12 @@ public class User {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", roles=" + roles + "]";
+	}
+
+	
 	
 }

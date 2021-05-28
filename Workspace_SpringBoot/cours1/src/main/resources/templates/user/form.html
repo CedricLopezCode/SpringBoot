@@ -20,6 +20,9 @@
 	    <label class="form-label">Prenom</label>
 	    <input type="text" class="form-control"  name="prenom">
 	  </div>
+	  <select multiple class="form-select" aria-label="Default select example" name="roles">
+		  <option th:each="role:${roles}" th:value="${role.id}" th:text="${role.nom}"></option>
+		</select>
 	  <button type="submit" class="btn btn-primary">Envoyer</button>
 	</form>
 	<p><a class="btn btn-info" th:href="@{/}" role="button">Home</a></p>

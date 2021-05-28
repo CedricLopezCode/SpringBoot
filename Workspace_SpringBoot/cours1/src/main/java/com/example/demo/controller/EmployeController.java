@@ -42,21 +42,25 @@ public class EmployeController {
 		model.addAttribute("allEmployes", employeRepository.findAll());
 		return "employe/listeEmploye";
 	}
+	
 	/*
 	@GetMapping("/showEmploye/{id}") //V1
 	public String show(@PathVariable(value= "id") Long employeId, Model model) {
 		//CRRUD 
-		model.addAttribute("employe", employeRepository.findById(employeId));
+		model.addAttribute("employe", employeRepository.findById(employeId).get());
 		return "employe/showEmploye";
-	}
-	*/
+	}*/
 	@GetMapping("/showEmploye/{id}") //V2
 	public String show(@PathVariable(value= "id") Long employeId, Model model) {
 		//  R de CRUD 
-		Optional<Employe> employe = employeRepository.findById(employeId);
+		//V1
+		model.addAttribute("detailEmploye", employeRepository.findById(employeId).get());
+		//V2
+		/*Optional<Employe> employe = employeRepository.findById(employeId);
 		if(employe.isPresent()) {
 			model.addAttribute("detailEmploye", employe.get());
 		}
+		*/
 		return "employe/showEmploye";
 	}
 	
@@ -66,13 +70,44 @@ public class EmployeController {
 			return "employe/showEmploye";
 		}
 		//  U de CRUD
-		System.out.println(employe.toString());
-		
 		employeRepository.save(employe);
-
+		
 		return "redirect:/listeEmploye"; 
 	} 
+	/*
+	//Correction Moussa
+	@PostMapping("/show/{id}")
+	public String show(@PathVariable(value = "id") Long employeId, Model model,
+			@Validated Employe employeDetail, BindingResult bindingResult) throws AttributeNotFoundException {
+		
+		if(bindingResult.hasErrors()) {
+			return "employe/formulaire";
+		}
+		
+		Employe employe = employeRepository.findById(employeId).orElseThrow(() -> new AttributeNotFoundException("Id non trouvé " +employeId)) ;
+		
+		employe.setNom(employeDetail.getNom());
+		employe.setPrenom(employeDetail.getPrenom());
+		employe.setEmail(employeDetail.getEmail());
+		employe.setFonction(employeDetail.getFonction());
+		
+		employeRepository.save(employe);
+		
+		return "redirect:/machin";
+		
+	}
 	
+	//DELETE EMPLOYE
+	@GetMapping("/delete/{id}")
+	public String delete (@PathVariable(value = "id") Long employeId) throws AttributeNotFoundException {
+		
+		Employe employe = employeRepository.findById(employeId).orElseThrow(() -> new AttributeNotFoundException("Id non trouvé " +employeId)) ;
+		
+		employeRepository.delete(employe);
+		
+		return "redirect:/machin";
+	}
+	*/
 	@GetMapping("/deleteEmploye/{id}")
 	public String deleteEmploye(@PathVariable(value= "id") Long employeId, Model model) {
 		//D de CRUD

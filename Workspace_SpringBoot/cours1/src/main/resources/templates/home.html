@@ -9,6 +9,7 @@
 	<link href="NewFile.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
+<div th:replace="fragments/header::navbar"></div>
 <div class="test">
 	test home
 </div>
@@ -17,6 +18,9 @@
 	<a class="btn btn-info" th:href="@{/listUser}" role="button">List User</a>
 	<a class="btn btn-info" th:href="@{/ajoutEmploye}" role="button">Ajout Employe</a>
 	<a class="btn btn-info" th:href="@{/listeEmploye}" role="button">Liste Employe</a>
+	<a class="btn btn-info" th:href="@{/ajoutArticle}" role="button">Ajout Article</a>
+	<a class="btn btn-info" th:href="@{/listeArticle}" role="button">Liste Article</a>
 </div>
+<div th:replace="fragments/footer::footer"></div>
 </body>
 </html>

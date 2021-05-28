@@ -1,0 +1,23 @@
+<div th:replace="fragments/header::header_nav"></div>
+<h1>Liste Articles</h1>
+	<div id="table_article">
+		<table class="listeRead">
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Resume</th>
+				<th>Auteur</th>
+			</tr>
+			<tr th:each="unarticle:${allArticles}">
+				<td th:text="${unarticle.id}"></td>
+				<td th:text="${unarticle.titre}"></td>
+				<td th:text="${unarticle.resume}"></td>
+				<td th:text="${unarticle.user.nom}"></td>
+				<td><a class="btn btn-warning" th:href="@{/lireArticle/{id} (id=${unarticle.id})}">Lire</a></td>	
+			</tr>
+		</table>
+	</div>
+	<p>Nombre Articles = <span th:text="${allArticles.size}"></span> </p>
+	<p><a class="btn btn-info" th:href="@{/}" role="button">Home</a></p>
+
+<div th:replace="fragments/footer::footer"></div>

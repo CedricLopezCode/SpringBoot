@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<p th:replace="fragments/header::header"></p>
+	
+	<h1>Article</h1>
+	<div th:text="${detailArticle.id}"></div>
+	<div th:text="${detailArticle.titre}"></div>
+	<div th:text="${detailArticle.resume}"></div>
+	<div th:text="${detailArticle.user.nom}"></div>
+
+	
+	<!--  -->
+	
+	<p><a class="btn btn-info" th:href="@{/}" role="button">Home</a></p>
+<div th:replace="fragments/footer::footer"></div>

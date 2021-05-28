@@ -1,0 +1,20 @@
+
+<div th:replace="fragments/header::header"></div>
+<form class="form_user flex-col-center" method="post" th:action="@{/ajoutArticle}" th:object="${article}">
+	  <div class="mb-3">
+	   <label class="form-label">Titre</label>
+	    <input type="text" class="form-control" name="titre">
+	  </div>
+	  <div class="mb-3">
+	    <label class="form-label">Resume</label>
+	    <input type="text" class="form-control"  name="resume">
+	  </div>
+	  <select class="form-select" aria-label="Default select example" name="user">
+		  <option th:each="user:${users}" th:value="${user.id}" th:text="${user.nom}"></option>
+		</select>
+	  <button type="submit" class="btn btn-primary">Envoyer</button>
+	</form> 
+
+<p><a class="btn btn-info" th:href="@{/}" role="button">Home</a></p>
+</body>
+</html>

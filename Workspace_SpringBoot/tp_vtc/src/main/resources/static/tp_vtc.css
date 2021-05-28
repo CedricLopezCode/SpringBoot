@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+body{
+	background: black;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.flex-row{
+	display: flex;
+	flex-direction: row;
+}
+.flex-row-center{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.flex-col{
+	display: flex;
+	flex-direction: column;
+}
+.flex-col-center{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.test{
+	background: red;
+}
+.form_user{
+	margin: 5em 10em;
+	padding: 5em;
+	width: 40em;
+	background: midnightblue;
+}
+.listeRead{
+	margin: 5em 10em;
+	padding: 5em;
+	width: 40em;
+	background: midnightblue;
+	text-align: center;
+}
+#sommaire_boutons a{
+	margin: 10px;
+}
