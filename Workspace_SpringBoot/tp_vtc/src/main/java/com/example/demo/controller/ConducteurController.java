@@ -39,7 +39,6 @@ public class ConducteurController {
 	@GetMapping("/updateConducteur/{id_conducteur}")	// Partie RRR 
 	public String recupConducteur(@PathVariable(value= "id_conducteur") Long id_conducteur, Model model, BindingResult bindingResult) {
 		model.addAttribute("unConducteur", conducteurRepository.findById(id_conducteur).get());
-		
 		return "/pageConducteur";
 	}
 	@PostMapping("/updateConducteur/{id_conducteur}")	//Partie UUU

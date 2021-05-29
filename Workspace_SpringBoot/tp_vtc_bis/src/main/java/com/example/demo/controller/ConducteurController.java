@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Conducteur;
 import com.example.demo.repository.ConducteurRepository;
+import com.example.demo.repository.VehiculeRepository;
 
 @Controller
 public class ConducteurController {
 
 	@Autowired ConducteurRepository conducteurRepository;
+	@Autowired VehiculeRepository vehiculeRepository;
 	
 	//RRRR CRUD
 	@GetMapping("/pageConducteur")

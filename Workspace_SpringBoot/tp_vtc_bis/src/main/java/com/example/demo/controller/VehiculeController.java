@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Vehicule;
+import com.example.demo.repository.ConducteurRepository;
 import com.example.demo.repository.VehiculeRepository;
 
 @Controller
 public class VehiculeController {
 
 	@Autowired VehiculeRepository vehiculeRepository;
+	@Autowired ConducteurRepository conducteurRepository;
 	
 	//RRRR CRUD
 	@GetMapping("/pageVehicule")
@@ -34,7 +36,6 @@ public class VehiculeController {
 	//DDDD CRUD
 	@GetMapping("/deleteVehicule/{id}")
 	public String deleteVehicule(@PathVariable(value="id") Long id) {
-		System.out.println(id);
 		vehiculeRepository.deleteById(id);
 		return "redirect:/pageVehicule";
 	}

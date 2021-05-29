@@ -1,9 +1,12 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Vehicule {
@@ -15,20 +18,31 @@ public class Vehicule {
 	private String couleur;
 	private String immatriculation;
 	
+	@ManyToMany(mappedBy = "vehicules")
+	private List<Conducteur> conducteurs;
 	
 	public Vehicule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Vehicule(String marque, String modele, String couleur, String immatriculation) {
+	public Vehicule(String marque, String modele, String couleur, 
+			String immatriculation,	List<Conducteur> conducteurs) {
 		super();
 		this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
 		this.immatriculation = immatriculation;
+		//this.conducteurs = conducteurs;
 	}
 
 
+	/*
+	public List<Conducteur> getConducteurs() {
+		return conducteurs;
+	}
+	public void setConducteurs(List<Conducteur> conducteurs) {
+		this.conducteurs = conducteurs;
+	}*/
 	public Long getId_vehicule() {
 		return id_vehicule;
 	}
