@@ -27,7 +27,7 @@
 </div>
 
 <form class="form_user flex-col-center" method="post" th:action="@{/ajoutConducteur}" th:object="${conducteur}">
-	<input type="hidden" class="form-control" name="id_conducteur">
+	<input type="hidden" class="form-control" name="id_conducteur"><!--th:field="*{id_conducteur}" th:errors="_"-->
 	<div class="mb-3">
 		<label class="form-label">Nom</label>
 		<input type="text" class="form-control" name="nom">

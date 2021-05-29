@@ -81,7 +81,7 @@ public class Vehicule {
 				+ couleur + ", immatriculation=" + immatriculation + "]";
 	}
 	public String toStringResume() {
-		return "Vehicule: " + marque + " " + modele + " "+ couleur + " " + immatriculation;
+		return marque + " " + modele + " "+ couleur + " " + immatriculation;
 	}
 	
 }

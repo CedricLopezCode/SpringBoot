@@ -25,6 +25,7 @@ public class ConducteurController {
 		model.addAttribute("allConducteurs", conducteurRepository.findAll());
 		return "conducteur/conducteur";
 	}
+	
 	//CCCC CRUD
 	@PostMapping("/ajoutConducteur")
 	public String ajouterConducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {
@@ -32,7 +33,21 @@ public class ConducteurController {
 		conducteurRepository.save(conducteur);
 		return "redirect:/pageConducteur";
 	}
+	
 	//UUUU CRUD
+	@GetMapping("/updateConducteur/{id}") //V1
+	public String ReadUpdate(@PathVariable(value= "id") Long id, Model model) {
+		model.addAttribute("conducteur", conducteurRepository.findById(id).get());
+		return "redirect:/pageConducteur";
+	}
+	@PostMapping("/updateConducteur")
+	public String CreateUpdate(@Validated Conducteur conducteur, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()){return "redirect:/pageConducteur";}
+		//  U de CRUD
+		conducteurRepository.save(conducteur);
+		return "redirect:/pageConducteur";
+	} 
+	
 	//DDDD CRUD
 	@GetMapping("/deleteConducteur/{id}")
 	public String deleteConducteur(@PathVariable(value="id") Long id) {

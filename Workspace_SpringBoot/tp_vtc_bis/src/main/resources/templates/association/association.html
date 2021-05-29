@@ -11,12 +11,16 @@
 			<th>Vehicule</th>
 			<th>Modification</th>
 			<th>Suppression</th>
-		</tr><!-- -->
+		</tr> 
 		<tr th:each="association:${allAssociations}">
 			<td th:text="${association.id_association}"></td>
-			<td th:text="${association.conducteur.toStringResume()}"></td>
-			<td th:text="${association.vehicule.toStringResume()}"></td>
-			<td><a class="btn btn-warning" th:href="@{/updateAssociation/{id}(id=${association.id_association})}">
+			<td th:text="${association.conducteur}"></td>
+			<td th:text="${allConducteurs[__${association.conducteur}__].toStringResume()}"></td>
+			<td th:text="${association.vehicule}"></td>
+			<td th:text="${allVehicules[1].toStringResume()}"></td>
+			<!--
+			<td th:text="${allVehicules[__${association.vehicule}__].toStringResume()}"></td>
+			--><td><a class="btn btn-warning" th:href="@{/updateAssociation/{id}(id=${association.id_association})}">
 				<img src="Paint_icon-icons.com_55521.png">
 			</a></td>
 			<td><a class="btn btn-danger" th:href="@{/deleteAssociation/{id}(id=${association.id_association})}">
@@ -29,17 +33,24 @@
 <form class="form_user flex-col-center" method="post" th:action="@{/ajoutAssociation}" th:object="${association}">
 	<input type="hidden" class="form-control" name="id_association">
 	<div class="flex-row">
-	 	<select multiple class="form-select" aria-label="Default select example" name="conducteur">
-		  	<option th:each="conducteur:${allConducteurs}" th:value="${conducteur.id_conducteur}" th:text="${conducteur.toStringResume()}"></option>
-		</select>
-		 <select multiple class="form-select" aria-label="Default select example" name="vehicule">
-		  	<option th:each="vehicule:${allVehicules}" th:value="${vehicule.id_vehicule}" th:text="${vehicule.toStringResume()}"></option>
-		</select>
+		<div class="flex-col">
+			<label class="form-label">Conducteur</label>
+		 	<select class="form-select" aria-label="Default select example" name="conducteur">
+			  	<option th:each="conducteur:${allConducteurs}" th:value="${conducteur.id_conducteur}" th:text="${conducteur.toStringResume()}"></option>
+			</select>
+		</div>
+		<div class="flex-col">
+			<label class="form-label">Vehicule</label>
+			 <select class="form-select" aria-label="Default select example" name="vehicule">
+			  	<option th:each="vehicule:${allVehicules}" th:value="${vehicule.id_vehicule}" th:text="${vehicule.toStringResume()}"></option>
+			</select>
+		</div>
 	</div>
 	<button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+</form> 
+
 <p>Nombre Associations = <span th:text="${allAssociations.size}"></span> </p> 
-<h1>Conducteurs sans Véhicule</h1>
+ <h1>Conducteurs sans Véhicule</h1>
 <div id="table_conducteur">
 	<table class="listeRead">
 		<tr>
@@ -65,7 +76,8 @@
 			</td>
 		</tr>
 	</table>
-	<p>Conducteurs sans Véhicule = <span th:text="${conducteurSansVehicule.size}"></span> </p> 
+</div>
+<p>Conducteurs sans Véhicule = <span th:text="${conducteurSansVehicule.size}"></span> </p> 
 	<h1>Véhicules sans conducteur</h1>
 <div id="table_conducteur">
 	<table class="listeRead">
@@ -94,8 +106,8 @@
 			</td>
 		</tr>
 	</table>
-</div>
-<p>Nombre Véhicules sans conducteur = <span th:text="${vehiculeSansConducteurs.size}"></span> </p> 
-</div>
+</div> 
+<p>Nombre Véhicules sans conducteur = <span th:text="${vehiculeSansConducteur.size}"></span> </p> 
 
+ <!--  -->
 <div th:replace="fragment/footer::footer"></div>

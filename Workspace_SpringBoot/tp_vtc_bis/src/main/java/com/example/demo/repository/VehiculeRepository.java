@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.demo.model.Vehicule;
 
 public interface VehiculeRepository extends JpaRepository<Vehicule, Long>{
-
-	@Query(
-			"SELECT * FROM vehicule "
-			+ "LEFT JOIN association_vehicule_conducteur "
-			+ "WHERE vehicule IS NOT NULL")
+/*
+	@Query("SELECT * FROM vehicule "
+			+ "LEFT JOIN association "
+			+ "ON conducteur.id_vehicule = association.vehicule "
+			+ "WHERE association.vehicule IS NULL")
 	List<Vehicule> vehiculeSansConducteur();
+	*/
 }

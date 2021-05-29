@@ -70,7 +70,7 @@ public class Conducteur {
 		return "Conducteur [id_conducteur=" + id_conducteur + ", prenom=" + prenom + ", nom=" + nom + "]";
 	}
 	public String toStringResume() {
-		return "Conducteur: " + prenom + " " + nom;
+		return prenom + " " + nom;
 	}
 	
 }
