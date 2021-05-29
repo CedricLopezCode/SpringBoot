@@ -17,14 +17,24 @@ public class Vehicule {
 	private String modele;
 	private String couleur;
 	private String immatriculation;
-	
+	/*
 	@ManyToMany(mappedBy = "vehicules")
 	private List<Conducteur> conducteurs;
-	
+	*/
 	public Vehicule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Vehicule(String marque, String modele, String couleur, String immatriculation) {
+		super();
+		this.marque = marque;
+		this.modele = modele;
+		this.couleur = couleur;
+		this.immatriculation = immatriculation;
+	}
+
+	/*
 	public Vehicule(String marque, String modele, String couleur, 
 			String immatriculation,	List<Conducteur> conducteurs) {
 		super();
@@ -34,9 +44,6 @@ public class Vehicule {
 		this.immatriculation = immatriculation;
 		//this.conducteurs = conducteurs;
 	}
-
-
-	/*
 	public List<Conducteur> getConducteurs() {
 		return conducteurs;
 	}

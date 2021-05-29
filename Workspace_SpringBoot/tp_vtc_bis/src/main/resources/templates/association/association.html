@@ -2,7 +2,7 @@
 <div th:replace="fragment/navbar::navbar"></div>
 
 <h1>Liste Associations</h1>
-	
+	<!--
 <div id="table_assoc">
 	<table class="listeRead">
 		<tr>
@@ -11,7 +11,7 @@
 			<th>Vehicule</th>
 			<th>Modification</th>
 			<th>Suppression</th>
-		</tr><!-- -->
+		</tr> 
 		<tr th:each="association:${allAssociations}">
 			<td th:text="${association.id_association}"></td>
 			<td th:text="${association.conducteur.toStringResume()}"></td>
@@ -97,5 +97,5 @@
 </div>
 <p>Nombre Véhicules sans conducteur = <span th:text="${vehiculeSansConducteurs.size}"></span> </p> 
 </div>
-
+-->
 <div th:replace="fragment/footer::footer"></div>
