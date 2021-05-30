@@ -28,8 +28,8 @@ public class AssociationController {
 		model.addAttribute("allConducteurs", conducteurRepository.findAll());
 		model.addAttribute("allVehicules", vehiculeRepository.findAll());
 		model.addAttribute("allAssociations", associationRepository.findAll());
-		model.addAttribute("conducteurSansVehicule", conducteurRepository.findAll());
-		model.addAttribute("vehiculeSansConducteur", vehiculeRepository.findAll());
+		model.addAttribute("conducteurSansVehicule", conducteurRepository.conducteurSansVehicule());
+		model.addAttribute("vehiculeSansConducteur", vehiculeRepository.vehiculeSansConducteur());
 		return "association/association";
 	}
 	//CCCC CRUD

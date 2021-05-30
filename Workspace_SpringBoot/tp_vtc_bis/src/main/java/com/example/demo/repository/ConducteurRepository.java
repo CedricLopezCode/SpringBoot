@@ -13,7 +13,10 @@ public interface ConducteurRepository extends JpaRepository<Conducteur, Long>{
 	List<Conducteur> conducteurSansVehicule();
 	*/
 	/*
-	@Query("SELECT nom FROM conducteur WHERE id_conducteur = 1")
-	public Conducteur nom(); 
-	*/
+	Version Moussa
+	@Query(value="SELECT c FROM conducteur c LEFT JOIN association ON c.id_conducteur = association.conducteur WHERE association.conducteur IS NULL", nativeQuery = true)
+    List<Conducteur> conducteurSansVehicule();
+	 */
+	@Query(value="SELECT id_conducteur FROM conducteur c LEFT JOIN association ON c.id_conducteur = association.conducteur WHERE association.conducteur IS NULL", nativeQuery = true)
+	List<Conducteur> conducteurSansVehicule();
 }
