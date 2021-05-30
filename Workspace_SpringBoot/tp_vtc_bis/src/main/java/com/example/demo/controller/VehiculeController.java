@@ -33,6 +33,18 @@ public class VehiculeController {
 		return "redirect:/pageVehicule";
 	}
 	//UUUU CRUD
+	@GetMapping("/updateVehicule/{id}")
+	public String ReadUpdate(@PathVariable(value="id") Long id, Model model) {
+		model.addAttribute("allVehicules", vehiculeRepository.findAll());
+		model.addAttribute("unvehicule", vehiculeRepository.findById(id));
+		return "vehicule/vehicule";
+	}
+	@PostMapping("/updateVehicule")
+	public String CreateUpdate(@Validated Vehicule vehicule, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {return "home";}
+		vehiculeRepository.save(vehicule);
+		return "redirect:/pageVehicule";
+	}
 	//DDDD CRUD
 	@GetMapping("/deleteVehicule/{id}")
 	public String deleteVehicule(@PathVariable(value="id") Long id) {

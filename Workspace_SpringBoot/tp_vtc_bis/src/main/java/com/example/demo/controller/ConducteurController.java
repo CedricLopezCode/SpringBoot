@@ -37,8 +37,9 @@ public class ConducteurController {
 	//UUUU CRUD
 	@GetMapping("/updateConducteur/{id}") //V1
 	public String ReadUpdate(@PathVariable(value= "id") Long id, Model model) {
-		model.addAttribute("conducteur", conducteurRepository.findById(id).get());
-		return "redirect:/pageConducteur";
+		model.addAttribute("unconducteur", conducteurRepository.findById(id).get());
+		model.addAttribute("allConducteurs", conducteurRepository.findAll());
+		return "conducteur/conducteur";
 	}
 	@PostMapping("/updateConducteur")
 	public String CreateUpdate(@Validated Conducteur conducteur, BindingResult bindingResult) {

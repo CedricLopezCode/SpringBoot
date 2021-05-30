@@ -1,8 +1,8 @@
 <div th:replace="fragment/header::header"></div>
 <div th:replace="fragment/navbar::navbar"></div>
 
-<h1>Liste Vehicules</h1>
-	
+<h1>Vehicules</h1>
+	<!-- LISTE VEHICULE -->
 <div id="table_vehicule">
 	<table class="listeRead">
 		<tr>
@@ -20,7 +20,7 @@
 			<td th:text="${vehicule.modele}"></td>
 			<td th:text="${vehicule.couleur}"></td>
 			<td th:text="${vehicule.immatriculation}"></td>
-			<td><a class="btn btn-warning" th:href="@{/updateVehicule/{id}(id=${vehicule.id_vehicule})}">
+			<td><a class="btn btn-info" th:href="@{/updateVehicule/{id}(id=${vehicule.id_vehicule})}">
 				<img src="Paint_icon-icons.com_55521.png">
 			</a></td>
 			<td><a class="btn btn-danger" th:href="@{/deleteVehicule/{id}(id=${vehicule.id_vehicule})}">
@@ -29,27 +29,51 @@
 		</tr>
 	</table>
 </div>
-
-<form class="form_user flex-col-center" method="post" th:action="@{/ajoutVehicule}" th:object="${vehicule}">
-	<input type="hidden" class="form-control" name="id_vehicule">
-	<div class="mb-3">
-		<label class="form-label">Marque</label>
-		<input type="text" class="form-control" name="marque">
-	</div>
-	<div class="mb-3">
-		<label class="form-label">Modele</label>
-		<input type="text" class="form-control"  name="modele">
-	</div>
-	<div class="mb-3">
-		<label class="form-label">Couleur</label>
-		<input type="text" class="form-control" name="couleur">
-	</div>
-	<div class="mb-3">
-		<label class="form-label">Immatriculation</label>
-		<input type="text" class="form-control"  name="immatriculation">
-	</div>
-	<button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
-	
+<!-- FORM VIDE AJOUT -->
+<div th:object="${unvehicule}" th:if="${unvehicule} == null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/ajoutVehicule}">
+		<input type="hidden" class="form-control" name="id_vehicule">
+		<div class="mb-3">
+			<label class="form-label">Marque</label>
+			<input type="text" class="form-control" name="marque">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Modele</label>
+			<input type="text" class="form-control"  name="modele">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Couleur</label>
+			<input type="text" class="form-control" name="couleur">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Immatriculation</label>
+			<input type="text" class="form-control"  name="immatriculation">
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+</div>
+<!-- FORM PRE-REMPLI UPDATE -->
+<div th:object="${unvehicule}" th:if="${unvehicule} != null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/ajoutVehicule}">
+		<input type="hidden" class="form-control" name="id_vehicule" th:field="*{id_vehicule}">
+		<div class="mb-3">
+			<label class="form-label">Marque</label>
+			<input type="text" class="form-control" name="marque" th:field="*{marque}">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Modele</label>
+			<input type="text" class="form-control"  name="modele" th:field="*{modele}">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Couleur</label>
+			<input type="text" class="form-control" name="couleur" th:field="*{couleur}">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Immatriculation</label>
+			<input type="text" class="form-control"  name="immatriculation" th:field="*{immatriculation}">
+		</div>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
+</div>
 	
 <div th:replace="fragment/footer::footer"></div>

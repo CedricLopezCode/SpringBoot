@@ -1,8 +1,9 @@
 <div th:replace="fragment/header::header"></div>
 <div th:replace="fragment/navbar::navbar"></div>
 
-<h1>Liste Conducteur</h1>
+<h1>Conducteur</h1>
 	
+	<!-- LISTE CONDUCTEUR -->
 <div id="table_conducteur">
 	<table class="listeRead">
 		<tr>
@@ -16,7 +17,7 @@
 			<td th:text="${conducteur.id_conducteur}"></td>
 			<td th:text="${conducteur.prenom}"></td>
 			<td th:text="${conducteur.nom}"></td>
-			<td><a class="btn btn-warning" th:href="@{/updateConducteur/{id}(id=${conducteur.id_conducteur})}">
+			<td><a class="btn btn-info" th:href="@{/updateConducteur/{id}(id=${conducteur.id_conducteur})}">
 				<img src="Paint_icon-icons.com_55521.png">
 			</a></td>
 			<td><a class="btn btn-danger" th:href="@{/deleteConducteur/{id}(id=${conducteur.id_conducteur})}">
@@ -25,19 +26,39 @@
 		</tr>
 	</table>
 </div>
+<!-- FORM VIDE AJOUT -->
+<div  th:object="${unconducteur}" th:if="${unconducteur} == null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/ajoutConducteur}" th:object="${unconducteur}">
+		<input type="hidden" class="form-control" name="id_conducteur">
+		<!--th:field="*{id_conducteur}" th:errors="_"-->
+		<div class="mb-3">
+			<label class="form-label">Nom</label>
+			<input type="text" class="form-control" name="nom">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Prenom</label>
+			<input type="text" class="form-control"  name="prenom">
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+</div>
+<!-- FORM PRE-REMPLI UPDATE -->
+<div  th:object="${unconducteur}" th:if="${unconducteur} != null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/ajoutConducteur}" th:object="${unconducteur}">
+		<input type="text" class="form-control" name="id_conducteur" th:field="*{id_conducteur}">
+		<!--th:field="*{id_conducteur}" th:errors="_" 
+		 th:if="${unconducteur} != null" th:field="*{nom}-->
+		<div class="mb-3">
+			<label class="form-label">Nom</label>
+			<input type="text" class="form-control" name="nom" th:field="*{nom}">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Prenom</label>
+			<input type="text" class="form-control"  name="prenom" th:field="*{prenom}">
+		</div>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
+</div>
 
-<form class="form_user flex-col-center" method="post" th:action="@{/ajoutConducteur}" th:object="${conducteur}">
-	<input type="hidden" class="form-control" name="id_conducteur"><!--th:field="*{id_conducteur}" th:errors="_"-->
-	<div class="mb-3">
-		<label class="form-label">Nom</label>
-		<input type="text" class="form-control" name="nom">
-	</div>
-	<div class="mb-3">
-		<label class="form-label">Prenom</label>
-		<input type="text" class="form-control"  name="prenom">
-	</div>
-	<button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
-	
-	
+
 <div th:replace="fragment/footer::footer"></div>
