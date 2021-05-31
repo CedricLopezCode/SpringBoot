@@ -18,10 +18,10 @@
 			<td th:text="${conducteur.prenom}"></td>
 			<td th:text="${conducteur.nom}"></td>
 			<td><a class="btn btn-info" th:href="@{/updateConducteur/{id}(id=${conducteur.id_conducteur})}">
-				<img src="Paint_icon-icons.com_55521.png">
+				<img th:src="@{/Paint_icon-icons.com_55521.png}">
 			</a></td>
 			<td><a class="btn btn-danger" th:href="@{/deleteConducteur/{id}(id=${conducteur.id_conducteur})}">
-				<img src="19384-bubka-TrashEmpty_vista.png">
+				<img th:src="@{/19384-bubka-TrashEmpty_vista.png}">
 			</a></td>
 		</tr>
 	</table>
