@@ -1,0 +1,137 @@
+<div th:replace="fragment/header::header"></div>
+<div th:replace="fragment/navbar::navbar"></div>
+<meta charset="UTF-8">
+<h1>Associations</h1>
+	
+	<!-- LISTE ASSOCIATION -->
+<div id="table_assoc">
+	<table class="listeRead">
+		<tr>
+			<th>Id_Association</th>
+			<th>Conducteur</th>
+			<th>Vehicule</th>
+			<!--<th>Modification</th> -->
+			<th>Suppression</th>
+		</tr> 
+		<tr th:each="association:${allAssociations}">
+			<td th:text="${association.id_association}"></td>
+			<td th:text="${association.conducteur.toStringResume()}"></td>
+			<td th:text="${association.vehicule.toStringResume()}"></td>
+			<td><a class="btn btn-info" th:href="@{/updateAssociation/{id}(id=${association.id_association})}">
+				<img src="Paint_icon-icons.com_55521.png">
+			</a></td> 
+			<td><a class="btn btn-danger" th:href="@{/deleteAssociation/{id}(id=${association.id_association})}">
+				<img src="19384-bubka-TrashEmpty_vista.png">
+			</a></td> 
+		</tr>
+	</table>
+</div>
+<!-- FORM VIDE AJOUT -->
+<div  th:if="${uneAsso} == null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/pageAssociation}" th:object="${uneAsso}">
+		<div class="flex-row">
+			<div class="flex-col">
+				<label class="form-label">Conducteur</label>
+			 	<select class="form-select" aria-label="Default select example" name="conducteur">
+				  	<option th:each="conducteur:${allConducteurs}" th:value="${conducteur.id_conducteur}" th:text="${conducteur.toStringResume()}"></option>
+				</select>
+			</div>
+			<div class="flex-col">
+				<label class="form-label">Vehicule</label>
+				 <select class="form-select" aria-label="Default select example" name="vehicule">
+				  	<option th:each="vehicule:${allVehicules}" th:value="${vehicule.id_vehicule}" th:text="${vehicule.toStringResume()}"></option>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form> 
+</div>
+<!-- FORM PRE-REMPLI UPDATE -->
+<div th:object="${uneAsso}" th:if="${uneAsso} != null">
+	<form class="form_user flex-col-center" method="post" th:action="@{/updateAssociation}" th:object="${uneAsso}">
+		<input type="text" class="form-control" name="id_association" th:field="*{id_association}">
+		<div class="flex-col">
+			<label class="form-label">Conducteur</label>
+		 	<select class="form-select" aria-label="Default select example" name="conducteur">
+			  	<option th:value="${conducteur}" th:text="${condAModif.toStringResume()}"></option>
+			  	<option th:each="conducteur:${conducteurSansVehicule}" th:value="${conducteur.id_conducteur}" th:text="${conducteur.toStringResume()}"></option>
+			</select>
+		</div>
+		<div class="flex-col">
+			<label class="form-label">Vehicule</label>
+			 <select class="form-select" aria-label="Default select example" name="vehicule">
+			 <option th:value="${vehicule}" th:text="${vehAModif.toStringResume()}"></option>
+			  	<option th:each="vehicule:${vehiculeSansConducteur}" th:value="${vehicule.id_vehicule}" th:text="${vehicule.toStringResume()}"></option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Modifier</button>
+	</form>
+</div>
+<p>Nombre Associations = <span th:text="${allAssociations.size}"></span> </p> 
+
+<!-- LISTE CONDUCTEUR SANS VEHICULE -->
+<h1>Conducteurs sans Véhicule</h1>
+<div id="table_conducteur">
+	<table class="listeRead">
+		<tr>
+			<th>Id_conducteur</th>
+			<th>Prenom</th>
+			<th>Nom</th>
+			<th>Modifier</th>
+			<th>Supprimer</th>
+		</tr>
+		<tr th:each="csv:${conducteurSansVehicule}">
+			<td th:text="${csv.id_conducteur}"></td>
+			<td th:text="${csv.prenom}"></td>
+			<td th:text="${csv.nom}"></td>
+			<td>
+				<a class="btn btn-info" th:href="@{/updateConducteur/{id}(id=${csv.id_conducteur})}">
+					<img src="Paint_icon-icons.com_55521.png" width="30px">
+				</a>
+			</td>
+			<td>
+				<a class="btn btn-danger" th:href="@{/deleteConducteur/{id}(id=${csv.id_conducteur})}">
+					<img src="19384-bubka-TrashEmpty_vista.png" width="30px">
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<p>Conducteurs sans Véhicule = <span th:text="${conducteurSansVehicule.size}"></span> </p> 
+
+<!-- LISTE VEHICULE SANS CONDUCTEUR-->
+<h1>Véhicules sans conducteur</h1>
+<div id="table_conducteur">
+	<table class="listeRead">
+		<tr>
+			<th>Id_Vehicule</th>
+			<th>Marque</th>
+			<th>Modele</th>
+			<th>Couleur</th>
+			<th>Immatriculation</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+		</tr>
+		<tr th:each="vsc:${vehiculeSansConducteur}">
+			<td th:text="${vsc.id_vehicule}"></td>
+			<td th:text="${vsc.marque}"></td>
+			<td th:text="${vsc.modele}"></td>
+			<td th:text="${vsc.couleur}"></td>
+			<td th:text="${vsc.immatriculation}"></td>
+			<td>
+				<a class="btn btn-info" th:href="@{/updateVehicule/{id}(id=${vsc.id_vehicule})}">
+					<img src="Paint_icon-icons.com_55521.png" width="30px">
+				</a>
+			</td>
+			<td>
+				<a class="btn btn-danger" th:href="@{/deleteVehicule/{id}(ide=${vsc.id_vehicule})}">
+					<img src="19384-bubka-TrashEmpty_vista.png" width="30px">
+				</a>
+			</td>
+		</tr>
+	</table>
+</div> 
+<p>Nombre Véhicules sans conducteur = <span th:text="${vehiculeSansConducteur.size}"></span> </p> 
+
+ <!--  -->
+<div th:replace="fragment/footer::footer"></div>

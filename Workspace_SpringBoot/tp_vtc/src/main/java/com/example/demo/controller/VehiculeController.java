@@ -10,54 +10,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Vehicule;
+import com.example.demo.repository.ConducteurRepository;
 import com.example.demo.repository.VehiculeRepository;
 
 @Controller
 public class VehiculeController {
 
 	@Autowired VehiculeRepository vehiculeRepository;
+	@Autowired ConducteurRepository conducteurRepository;
 	
-	//CCCCCCCCCCCCCCCCCCCCCCCCCCCC
-	@PostMapping("/ajoutVehicule")  //  CCC
-	public String ajoutVehicule(@Validated Vehicule vehicule, BindingResult bindingResult){
-		if(bindingResult.hasErrors()) {
-			return "home";
-		}
-		vehiculeRepository.save(vehicule);
-		return "redirect:/pageVehicule";
-	}
-	
-	//RRRRRRRRRRRRRRRRRRRRRRRR
-	@GetMapping("/pageVehicule")	// RRR
-	public String readAllVehicules(Model model) {
+	//RRRR CRUD
+	@GetMapping("/pageVehicule")
+	public String listeVehicule(Model model) {
 		model.addAttribute("allVehicules", vehiculeRepository.findAll());
 		return "vehicule/vehicule";
 	}
 	
-	//	UUUUUUUUUUUUUUUU
-	@GetMapping("/updateVehicule/{id_vehicule}")	// Partie RRR 
-	public String recupVehicule(@PathVariable(value= "id_vehicule") Long id_vehicule, Model model, BindingResult bindingResult) {
-		model.addAttribute("unVehicule", vehiculeRepository.findById(id_vehicule).get());
-		
-		return "/pageVehicule";
-	}
-	@PostMapping("/updateVehicule/{id_vehicule}")	//Partie UUU
-	public String updateVehicule(@Validated Vehicule vehicule, BindingResult bindingResult) {
-		System.out.println("debut U");
-		if(bindingResult.hasErrors()) {
-			return "vehicule/vehicule";
-		}
+	//CCCC CRUD
+	@PostMapping("/ajoutVehicule")
+	public String ajouterVehicule(@Validated Vehicule vehicule, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {return "home";}
 		vehiculeRepository.save(vehicule);
-		System.out.println("fin U");
 		return "redirect:/pageVehicule";
 	}
 	
-	//	DDDDDDDDDDDDDD
-	@GetMapping("/deleteVehicule/{id_vehicule}")	// DDDD
-	public String deleteVehicule(@PathVariable(value= "id_vehicule") Long id_vehicule, Model model) {
-		vehiculeRepository.deleteById(id_vehicule);
+	//UUUU CRUD
+	@GetMapping("/updateVehicule/{id}")
+	public String ReadUpdate(@PathVariable(value="id") Long id, Model model) {
+		model.addAttribute("allVehicules", vehiculeRepository.findAll());
+		model.addAttribute("vehiculeAModif", vehiculeRepository.findById(id).get());
+		return "vehicule/vehicule";
+	}
+	@PostMapping("/updateVehicule")
+	public String CreateUpdate(@Validated Vehicule vehicule, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {return "home";}
+		vehiculeRepository.save(vehicule);
 		return "redirect:/pageVehicule";
 	}
 	
-	
-}//Fin class
+	//DDDD CRUD
+	@GetMapping("/deleteVehicule/{id}")
+	public String deleteVehicule(@PathVariable(value="id") Long id) {
+		vehiculeRepository.deleteById(id);
+		return "redirect:/pageVehicule";
+	}
+}

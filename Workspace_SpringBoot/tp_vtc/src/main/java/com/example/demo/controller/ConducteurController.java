@@ -11,53 +11,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Conducteur;
 import com.example.demo.repository.ConducteurRepository;
-
+import com.example.demo.repository.VehiculeRepository;
 
 @Controller
 public class ConducteurController {
 
 	@Autowired ConducteurRepository conducteurRepository;
+	@Autowired VehiculeRepository vehiculeRepository;
 	
-	//CCCCCCCCCCCCCCCCCCCCCCCCCCCC
-	@PostMapping("/ajoutConducteur")  //  CCC
-	public String ajoutConducteur(@Validated Conducteur conducteur, BindingResult bindingResult){
-		if(bindingResult.hasErrors()) {
-			return "home";
-		}
-		conducteurRepository.save(conducteur);
-		return "redirect:/pageConducteur";
-	}
-	
-	//RRRRRRRRRRRRRRRRRRRRRRRR
-	@GetMapping("/pageconducteur")	// RRR
-	public String readAllconducteurs(Model model) {
+	//RRRR CRUD
+	@GetMapping("/pageConducteur")
+	public String listeConducteur(Model model) {
 		model.addAttribute("allConducteurs", conducteurRepository.findAll());
 		return "conducteur/conducteur";
 	}
 	
-	//	UUUUUUUUUUUUUUUU
-	@GetMapping("/updateConducteur/{id_conducteur}")	// Partie RRR 
-	public String recupConducteur(@PathVariable(value= "id_conducteur") Long id_conducteur, Model model, BindingResult bindingResult) {
-		model.addAttribute("unConducteur", conducteurRepository.findById(id_conducteur).get());
-		return "/pageConducteur";
-	}
-	@PostMapping("/updateConducteur/{id_conducteur}")	//Partie UUU
-	public String updateConducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {
-		System.out.println("debut U");
-		if(bindingResult.hasErrors()) {
-			return "conducteur/conducteur";
-		}
+	//CCCC CRUD
+	@PostMapping("/ajoutConducteur")
+	public String ajouterConducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {return "home";}
 		conducteurRepository.save(conducteur);
-		System.out.println("fin U");
 		return "redirect:/pageConducteur";
 	}
 	
-	//	DDDDDDDDDDDDDD
-	@GetMapping("/deleteConducteur/{id_conducteur}")	// DDDD
-	public String deleteConducteur(@PathVariable(value= "id_conducteur") Long id_conducteur, Model model) {
-		conducteurRepository.deleteById(id_conducteur);
+	//UUUU CRUD
+	@GetMapping("/updateConducteur/{id}")
+	public String ReadUpdate(@PathVariable(value= "id") Long id, Model model) {
+		//----------------------------------------
+		System.out.println(conducteurRepository.findById(id));
+		System.out.println(conducteurRepository.findById(id).get());
+		//----------------------------------------
+		model.addAttribute("allConducteurs", conducteurRepository.findAll());
+		model.addAttribute("conducteurAModif", conducteurRepository.findById(id).get());
+		return "conducteur/conducteur";
+	}
+	@PostMapping("/updateConducteur")
+	public String CreateUpdate(@Validated Conducteur conducteur, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()){return "home";}
+		conducteurRepository.save(conducteur);
 		return "redirect:/pageConducteur";
 	}
 	
-	
-}//Fin class
+	//DDDD CRUD
+	@GetMapping("/deleteConducteur/{id}")
+	public String deleteConducteur(@PathVariable(value="id") Long id, Model model) {
+		model.addAttribute("conductASupp", conducteurRepository.findById(id));
+		conducteurRepository.deleteById(id);
+		return "redirect:/pageConducteur";
+	}
+}

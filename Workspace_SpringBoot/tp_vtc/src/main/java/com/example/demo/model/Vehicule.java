@@ -12,48 +12,37 @@ import javax.persistence.ManyToMany;
 public class Vehicule {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_vehicule;
+	private Long id;
 	private String marque;
 	private String modele;
 	private String couleur;
 	private String immatriculation;
 	
-	//@ManyToMany(mappedBy = "vehicules")
-	//private List<Conducteur> conducteurs;
-	
+	/*Version Initiale
+	 @ManyToMany(mappedBy = "vehicules")
+	private List<Conducteur> conducteurs;
+	*/
+	 
+
 	public Vehicule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Vehicule(String marque, String modele, String couleur, String immatriculation) {
+	public Vehicule(String marque, String modele, String couleur, 
+			String immatriculation) {
 		super();
 		this.marque = marque;
 		this.modele = modele;
 		this.couleur = couleur;
 		this.immatriculation = immatriculation;
 	}
-	public Vehicule(String marque, String couleur) {
-		super();
-		this.marque = marque;
-		this.couleur = couleur;
+
+	
+	public Long getId() {
+		return id;
 	}
-	/*
-	public Vehicule(Long id_vehicule, String marque, String modele, String couleur, String immatriculation,
-			List<Conducteur> conducteurs) {
-		super();
-		this.id_vehicule = id_vehicule;
-		this.marque = marque;
-		this.modele = modele;
-		this.couleur = couleur;
-		this.immatriculation = immatriculation;
-		//this.conducteurs = conducteurs;
-	}
-	*/
-	public Long getId_vehicule() {
-		return id_vehicule;
-	}
-	public void setId_vehicule(Long id_vehicule) {
-		this.id_vehicule = id_vehicule;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getMarque() {
 		return marque;
@@ -79,30 +68,15 @@ public class Vehicule {
 	public void setImmatriculation(String immatriculation) {
 		this.immatriculation = immatriculation;
 	}
-	/*
-	public List<Conducteur> getConducteurs() {
-		return conducteurs;
-	}
-	public void setConducteurs(List<Conducteur> conducteurs) {
-		this.conducteurs = conducteurs;
-	}*/
+
+
 	@Override
 	public String toString() {
-		return "Vehicule [id_vehicule=" + id_vehicule + ", marque=" + marque + ", modele=" + modele + ", couleur="
-				+ couleur + ", immatriculation=" + immatriculation + ", association_vehicule_conducteur="
-				+ /*conducteurs +*/ "]";
+		return "[id_vehicule=" + id + ", marque=" + marque + ", modele=" + modele + ", couleur="
+				+ couleur + ", immatriculation=" + immatriculation + "]";
 	}
 	public String toStringResume() {
-		return  id_vehicule +" "+ marque +" "+ modele +" "+ couleur +" "+ immatriculation ;
+		return marque + " " + modele + " "+ couleur + " " + immatriculation;
 	}
-	
-	/*
-	public String toStringResume() {
-		return "Assoc: "+id_association +"\nConducteur: "+  conducteur.toStringResume() +"\nVehicule "+ vehicule.toStringResume();
-	}
-	*/
-	
-	
-	
 	
 }

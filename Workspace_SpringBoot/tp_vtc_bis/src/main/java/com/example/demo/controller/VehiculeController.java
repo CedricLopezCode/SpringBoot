@@ -36,7 +36,7 @@ public class VehiculeController {
 	@GetMapping("/updateVehicule/{id}")
 	public String ReadUpdate(@PathVariable(value="id") Long id, Model model) {
 		model.addAttribute("allVehicules", vehiculeRepository.findAll());
-		model.addAttribute("unvehicule", vehiculeRepository.findById(id));
+		model.addAttribute("vehiAModif", vehiculeRepository.findById(id));
 		return "vehicule/vehicule";
 	}
 	@PostMapping("/updateVehicule")
