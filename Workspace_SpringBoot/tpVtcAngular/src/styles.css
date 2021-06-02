@@ -7,7 +7,7 @@ body{
 	color: white;
 	display: flex;
 	flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 .flex-row{
 	display: flex;
@@ -51,15 +51,3 @@ body{
 .modal-dark{
     background: black;
 }
-/*
-.form_user{
-    margin: 5em 10em;
-	padding: 5em;
-	width: 40em;
-	background: midnightblue;
-	border: solid 3px white;
-}
-#sommaire_boutons a{
-    margin: 10px;
-}
-*/

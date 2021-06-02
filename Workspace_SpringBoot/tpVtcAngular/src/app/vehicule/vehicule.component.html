@@ -1,0 +1,113 @@
+
+
+<h1>Page Vehicules</h1>
+	<!-- LISTE VEHICULE -->
+<div id="table_vehicule">
+	<table class="listeRead">
+		<tr>
+			<th>Id_Vehicule</th>
+			<th>Marque</th>
+			<th>Modele</th>
+			<th>Couleur</th>
+			<th>Immatriculation</th>
+			<th>Modification</th>
+			<th>Suppression</th>
+		</tr>
+		<tr>
+			<td>Id_Vehicule1</td>
+			<td>Marque1</td>
+			<td>Modele1</td>
+			<td>Couleur1</td>
+			<td>Immatriculation1</td>
+			<td><a class="btn btn-info" href="">
+				<img src="Paint_icon-icons.com_55521.png}">
+			</a></td>
+			<td>
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppVehi" attr ="data-bs-target='#ModalSuppVehi'">
+	 				<img src="19384-bubka-TrashEmpty_vista.png">
+				</button>
+			</td>
+        </tr>
+		<tr>
+            <td>Id_Vehicule2</td>
+			<td>Marque2</td>
+			<td>Modele2</td>
+			<td>Couleur2</td>
+			<td>Immatriculation2</td>
+			<td><a class="btn btn-info" href="">
+				<img src="Paint_icon-icons.com_55521.png}">
+			</a></td>
+			<td>
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppVehi" attr ="data-bs-target='#ModalSuppVehi'">
+	 				<img src="19384-bubka-TrashEmpty_vista.png">
+				</button>
+			</td>
+        </tr>
+		<tr>
+            <td>Id_Vehicule3</td>
+			<td>Marque3</td>
+			<td>Modele3</td>
+			<td>Couleur3</td>
+			<td>Immatriculation1</td>
+			<td><a class="btn btn-info" href="">
+				<img src="Paint_icon-icons.com_55521.png}">
+			</a></td>
+			<td>
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppVehi" attr ="data-bs-target='#ModalSuppVehi'">
+	 				<img src="19384-bubka-TrashEmpty_vista.png">
+				</button>
+			</td>
+        </tr>
+        <!-- Modal Vehicule-->
+        <div class="modal fade" id="ModalSuppVehi+${vehicule.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content modal-dark">
+              <div class="modal-header">
+                <h5 class="modal-title">Suppression Vehicule</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Voulez-vous vraiment supprimer le vehicule: <span text="vehicule.toStringResume()"></span> ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger">
+                        <a class="btn btn-danger" href=""> Valider la suppression</a>
+                    </button>
+              </div>
+            </div>
+          </div>
+        </div> 
+	</table>
+</div>
+<!-- FORM VIDE AJOUT -->
+<div object="vehiAModif" >
+	<form class="formulaire flex-col-center" method="post" action="ajoutVehicule">
+		<input type="hidden" class="form-control" name="id">
+		<div class="mb-3">
+			<label class="form-label">Marque</label>
+			<input type="text" class="form-control" name="marque">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Modele</label>
+			<input type="text" class="form-control"  name="modele">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Couleur</label>
+			<input type="text" class="form-control" name="couleur">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Immatriculation</label>
+			<input type="text" class="form-control"  name="immatriculation">
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+</div>
+
+
+
+
+
+
+
+

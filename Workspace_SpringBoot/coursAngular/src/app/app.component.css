@@ -1,0 +1,28 @@
+ #navbar_et_compte{
+    
+ }
+#side_et_contenu{
+    align-items: stretch;
+}
+app-navbar{
+    width: 80%;
+ }
+app-compte{
+    background: chartreuse;
+    width: 20%;
+ }
+app-sidebar{
+    background: red;
+ }
+app-content{
+     background: purple;
+ }
+app-footer{
+    position: absolute;
+    bottom: 0;
+    background: yellow;
+    color: black;
+    margin: 0;
+    width: 100%;
+    height: 5em;
+}

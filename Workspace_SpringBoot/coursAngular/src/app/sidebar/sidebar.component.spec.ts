@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NvCompComponent } from './nv-comp.component';
+import { SidebarComponent } from './sidebar.component';
 
-describe('NvCompComponent', () => {
-  let component: NvCompComponent;
-  let fixture: ComponentFixture<NvCompComponent>;
+describe('SidebarComponent', () => {
+  let component: SidebarComponent;
+  let fixture: ComponentFixture<SidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NvCompComponent ]
+      declarations: [ SidebarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NvCompComponent);
+    fixture = TestBed.createComponent(SidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
