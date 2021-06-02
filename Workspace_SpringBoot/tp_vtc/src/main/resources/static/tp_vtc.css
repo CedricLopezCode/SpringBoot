@@ -25,15 +25,16 @@ body{
 	flex-direction: column;
 	align-items: center;
 }
-
-.test{
-	background: red;
+form{
+	border: solid 3px white;
 }
+
 .form_user{
 	margin: 5em 10em;
 	padding: 5em;
 	width: 40em;
 	background: midnightblue;
+	border: solid 3px white;
 }
 .listeRead{
 	margin: 5em 10em;
@@ -41,10 +42,18 @@ body{
 	width: 40em;
 	background: midnightblue;
 	text-align: center;
+	border: solid 3px white;
 }
 .listeRead img{
 	height: 30px;
 }
+.listeRead td{
+	border-bottom: solid 1px white;
+}
 #sommaire_boutons a{
 	margin: 10px;
+}
+
+.test{
+	background: red;
 }
