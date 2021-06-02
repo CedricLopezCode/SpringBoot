@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +20,11 @@ public class Association {
 	*/
 	
 	//@Column(name="conducteur") 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Conducteur conducteur;
 	
 	//@Column(name="vehicule") 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Vehicule vehicule;
 	
 	

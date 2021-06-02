@@ -23,9 +23,35 @@
 			<td><a class="btn btn-info" th:href="@{/updateVehicule/{id}(id=${vehicule.id})}">
 				<img th:src="@{/Paint_icon-icons.com_55521.png}">
 			</a></td>
-			<td><a class="btn btn-danger" onclick="return confirm('Attention supression définitive')" th:href="@{/deleteVehicule/{id}(id=${vehicule.id})}">
+			<td>
+			<!--   Version Basique 
+			<a class="btn btn-danger" onclick="return confirm('Attention supression définitive')" th:href="@{/deleteVehicule/{id}(id=${vehicule.id})}">
 				<img th:src="@{/19384-bubka-TrashEmpty_vista.png}">
-			</a></td>
+			</a>
+			-->
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppVehi" th:attr ="data-bs-target='#ModalSuppVehi'+${vehicule.id}">
+	 				<img th:src="@{/19384-bubka-TrashEmpty_vista.png}">
+				</button>
+			</td>
+			<div class="modal fade" th:id="ModalSuppVehi+${vehicule.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content modal-dark">
+			      <div class="modal-header">
+			        <h5 class="modal-title">Suppression Vehicule</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        <p>Voulez-vous vraiment supprimer le vehicule: <span th:text="${vehicule.toStringResume()}"></span> ?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+		       		 <button type="button" class="btn btn-danger">
+			       		 <a class="btn btn-danger" th:href="@{/deleteVehicule/{id}(id=${vehicule.id})}"> Valider la suppression</a>
+		       		 </button>
+			      </div>
+			    </div>
+			  </div>
+			</div> 
 		</tr>
 	</table>
 </div>

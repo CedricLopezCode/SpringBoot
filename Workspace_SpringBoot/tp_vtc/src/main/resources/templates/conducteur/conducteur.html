@@ -14,66 +14,39 @@
 			<th>Supprimer</th>
 		</tr>
 		<tr th:each="conducteur:${allConducteurs}">
-			<td th:text="${conducteur.id}"></td>
+			<td th:utext="${conducteur.id}"></td>
 			<td th:text="${conducteur.prenom}"></td>
 			<td th:text="${conducteur.nom}"></td>
 			<td><a class="btn btn-info" th:href="@{/updateConducteur/{id}(id=${conducteur.id})}">
 				<img th:src="@{/Paint_icon-icons.com_55521.png}">
 			</a></td>
 			<td>
-			<a class="btn btn-danger" th:onclick="return confirm('Voulez-vous vraiment supprimer ?')" th:href="@{/deleteConducteur/{id}(id=${conducteur.id})}">
-				<button type="button" class="btn" data-mdb-toggle="modal" data-mdb-target="#ModalSuppCond">
+				<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppCond" th:attr ="data-bs-target='#ModalSuppCond'+${conducteur.id}">
 	 				<img th:src="@{/19384-bubka-TrashEmpty_vista.png}">
 				</button>
-			</a>
 			</td>
-			<!-- Modal Bootstrap -->
-			<!--<button type="button" data-bs-toggle="modal" data-bs-target="#ModalSuppCond">Launch modal</button>
-			<!-- 
-				<div class="modal" tabindex="-1" id="ModalSuppCond">
-				  <div class="modal-dialog">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title">Suppression Conducteur</h5>
-				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				      </div>
-				      <div class="modal-body">
-				        <p>Voulez-vous vraiment supprimer le conducteur: <span th:text="${conductASupp}"></span></p>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-				        <button type="button" class="btn btn-warning">Valider la suppression</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>  -->
+			<div class="modal fade" th:id="ModalSuppCond+${conducteur.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content modal-dark">
+			      <div class="modal-header">
+			        <h5 class="modal-title">Suppression Conducteur</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        <p>Voulez-vous vraiment supprimer le conducteur: <span th:text="${conducteur.toStringResume()}"></span> ?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+		       		 <button type="button" class="btn btn-danger">
+			       		 <a class="btn btn-danger" th:href="@{/deleteConducteur/{id}(id=${conducteur.id})}"> Valider la suppression</a>
+		       		 </button>
+			      </div>
+			    </div>
+			  </div>
+			</div> 
 		</tr>
 	</table>
-	<!-- Copier-Coller d'un site 
-			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#oMessagerie">
-      Ouvrir la fenêtre modale
-    </button>
 
-    <div class="modal fade" id="oMessagerie" tabindex="-1" role="dialog" aria-labelledby="oMessagerieLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="oMessagerieLabel">Titre</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Contenu
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
--->
 <!-- FORM VIDE AJOUT -->
 <div  th:object="${conducteurAModif}" th:if="${conducteurAModif} == null">
 	<form class="form_user flex-col-center" method="post" th:action="@{/ajoutConducteur}" th:object="${conducteurAModif}">

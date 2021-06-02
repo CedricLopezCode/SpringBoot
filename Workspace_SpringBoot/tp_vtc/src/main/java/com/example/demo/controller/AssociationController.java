@@ -65,7 +65,8 @@ public class AssociationController {
 		}
 	//DDDD CRUD
 	@GetMapping("/deleteAssociation/{id}")
-	public String deleteAssociation(@PathVariable(value="id") Long id) {
+	public String deleteAssociation(@PathVariable(value="id") Long id, Model model) {
+		model.addAttribute("assoASupp", associationRepository.findById(id));
 		associationRepository.deleteById(id);
 		return "redirect:/pageAssociation";
 	}

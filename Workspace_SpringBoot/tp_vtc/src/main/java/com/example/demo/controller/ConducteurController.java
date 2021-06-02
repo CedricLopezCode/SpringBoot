@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import javax.management.AttributeNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,4 +61,13 @@ public class ConducteurController {
 		conducteurRepository.deleteById(id);
 		return "redirect:/pageConducteur";
 	}
+	/*
+	//Version Camille Verifie l'existence avant et delete brut
+	@GetMapping("/deleteC/{id}")
+    public String delete(@PathVariable(value = "id") Long conducteurId) throws AttributeNotFoundException {
+        Conducteur conducteur = conducteurRepository.findById(conducteurId).orElseThrow(() -> new AttributeNotFoundException("Id non trouvé " +conducteurId)) ;
+        conducteurRepository.delete(conducteur);
+        return "redirect:/";
+    }
+    */
 }

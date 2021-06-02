@@ -50,8 +50,9 @@ public class VehiculeController {
 	
 	//DDDD CRUD
 	@GetMapping("/deleteVehicule/{id}")
-	public String deleteVehicule(@PathVariable(value="id") Long id) {
+	public String deleteVehiculer(@PathVariable(value="id") Long id, Model model) {
+		model.addAttribute("vehitASupp", vehiculeRepository.findById(id));
 		vehiculeRepository.deleteById(id);
-		return "redirect:/pageVehicule";
+		return "redirect:/pageConducteur";
 	}
 }
