@@ -1,0 +1,22 @@
+<!-- FORM VIDE AJOUT -->
+<div>
+	<form class="formulaire flex-col-center" method="post" action="ajoutAssociation" object="assocAModif">
+		<div class="flex-row">
+			<div class="flex-col">
+				<label class="form-label">Conducteur</label>
+			 	<select class="form-select" aria-label="Default select example" name="conducteur">
+				  	<option each="conducteur:conducteurSansVehicule" value="conducteur.id" text="conducteur.toStringResume()"></option>
+				</select>
+			</div>
+			<div class="flex-col">
+				<label class="form-label">Vehicule</label>
+				 <select class="form-select" aria-label="Default select example" name="vehicule">
+				  	<option each="vehiculeSansConducteur" value="vehicule.id" text="vehicule.toStringResume()"></option>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form> 
+</div>
+
+

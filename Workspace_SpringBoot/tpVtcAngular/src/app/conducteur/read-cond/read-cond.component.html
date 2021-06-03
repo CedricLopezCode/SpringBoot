@@ -1,0 +1,45 @@
+<!-- LISTE CONDUCTEUR -->
+<div id="table_conducteur">
+    <table class="listeRead">
+        <tr>
+            <th>Id_conducteur</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        <tr *ngFor="let conducteur of allConducteurs">
+            <td>{{conducteur.id}}</td>
+            <td>{{conducteur.prenom}}</td>
+            <td>{{conducteur.nom}}</td>
+            <td><a class="btn btn-info" href="">
+                <img src="assets/img/Paint_icon-icons.com_55521.png">
+            </a></td>
+            <td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalSuppCond" attr ="data-bs-target='#ModalSuppCond'+${conducteur.id}">
+                        <img src="assets/img/19384-bubka-TrashEmpty_vista.png">
+                </button>
+            </td>
+        </tr>
+        <!-- Modal Conducteur-->
+        <div class="modal fade" id="ModalSuppCond+${conducteur.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content modal-dark">
+                <div class="modal-header">
+                <h5 class="modal-title">Suppression Conducteur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p>Voulez-vous vraiment supprimer le conducteur: <span text="conducteur.toStringResume()"></span> ?</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger">
+                        <a class="btn btn-danger" href=""> Valider la suppression</a>
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div> 
+    </table>
+</div>

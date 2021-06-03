@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import javax.management.AttributeNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,7 @@ public class ConducteurController {
 		model.addAttribute("allConducteurs", conducteurRepository.findAll());
 		return "conducteur/conducteur";
 	}
-	
+		
 	//CCCC CRUD
 	@PostMapping("/ajoutConducteur")
 	public String ajouterConducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {

@@ -18,7 +18,7 @@ app-content{
      background: purple;
  }
 app-footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     background: yellow;
     color: black;
