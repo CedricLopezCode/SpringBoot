@@ -1,8 +1,23 @@
 
 <h1>Page Conducteurs</h1>
 
+<!--
+<p *ngIf="1 == 1"> 1 == 1</p>
+<p *ngIf="1 != 1"> 1 != 1</p>
+<p *ngIf="1 == 1 || 1 != 1"  > OU</p>
+<p *ngIf="1 == 1 && 1 != 1"  > ET</p>
+
+{{modifCondEnCours}}
+<p *ngIf="modifCondEnCours"> faux </p>
+<p *ngIf="!modifCondEnCours"> vrai </p>
+-->
 
 <app-read-cond></app-read-cond>
-<app-form-cond></app-form-cond>
-<app-form-modif-cond></app-form-modif-cond>
+
+<div *ngIf="!modifCondEnCours">
+    <app-form-cond></app-form-cond>
+</div>
+<div *ngIf="modifCondEnCours">
+    <app-form-modif-cond></app-form-modif-cond>
+</div>
 

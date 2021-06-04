@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehiculeComponent implements OnInit {
 
+  modifVehiEnCours = false;
+  
   constructor() { }
 
   ngOnInit(): void {

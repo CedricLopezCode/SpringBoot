@@ -3,8 +3,14 @@
 <h1>Page Associations</h1>
 	 
 <app-read-association></app-read-association>
-<app-form-association></app-form-association>
-<app-form-modif-association></app-form-modif-association>
+
+<div *ngIf="!modifAssocEnCours">
+  <app-form-association></app-form-association>
+</div>
+<div *ngIf="modifAssocEnCours">
+  <app-form-modif-association></app-form-modif-association>
+</div>
+
 <app-liste-condss-vehi></app-liste-condss-vehi>
 <app-liste-vehiss-cond></app-liste-vehiss-cond>
 	

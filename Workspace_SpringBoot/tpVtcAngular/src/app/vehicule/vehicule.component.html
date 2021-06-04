@@ -2,8 +2,16 @@
 
 <h1>Page Vehicules</h1>
 <app-read-vehicule></app-read-vehicule>
-<app-form-vehicule></app-form-vehicule>
-<app-form-modif-vehicule></app-form-modif-vehicule>
+
+
+<div *ngIf="!modifVehiEnCours">
+    <app-form-vehicule></app-form-vehicule>
+</div>
+<div *ngIf="modifVehiEnCours">
+    <app-form-modif-vehicule></app-form-modif-vehicule>
+</div>
+
+
 
 
 

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociationComponent implements OnInit {
 
+  modifAssocEnCours = false;
+
   constructor() { }
 
   ngOnInit(): void {
