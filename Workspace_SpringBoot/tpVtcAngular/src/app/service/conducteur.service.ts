@@ -18,15 +18,15 @@ export class ConducteurService {
   }
   /*CCCC de CRUD */
   createConducteur(condAAjouter: Conducteur): Observable<Conducteur[]>{
-    return this.http.get<Conducteur[]>('${this.urlSite}/pageConducteur/api');
+    return this.http.get<Conducteur[]>(`${this.urlSite}/pageConducteur/api`);
   }
   /*UUUU de CRUD */
-  updateConducteur(idCondAModifier: number): Observable<Conducteur[]>{
-    return this.http.get<Conducteur[]>('${this.urlSite}/pageConducteur/api');
+  recupCondAModif(idCondAModifier: number): Observable<Conducteur>{
+    return this.http.get<Conducteur>(`${this.urlSite}/recupCondAModif/api/${idCondAModifier}`);
   }
   /*DDDD de CRUD */
   deleteConducteur(idCondASupp: number): Observable<Conducteur[]>{
-    return this.http.get<Conducteur[]>('${this.urlSite}/pageConducteur/api');
+    return this.http.get<Conducteur[]>(`${this.urlSite}/pageConducteur/api`);
   }
 
 

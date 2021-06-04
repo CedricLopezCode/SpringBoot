@@ -18,15 +18,15 @@ export class VehiculeService {
   }
   /*CCCC de CRUD */
   createVehicule(condAAjouter: Vehicule): Observable<Vehicule[]>{
-    return this.http.get<Vehicule[]>('${this.urlSite}/pageVehicule/api');
+    return this.http.get<Vehicule[]>(`${this.urlSite}/pageVehicule/api`);
   }
   /*UUUU de CRUD */
-  updateVehicule(idCondAModifier: number): Observable<Vehicule[]>{
-    return this.http.get<Vehicule[]>('${this.urlSite}/pageVehicule/api');
+  recupVehiculeAModifier(idVehiAModifier: number): Observable<Vehicule>{
+    return this.http.get<Vehicule>(`${this.urlSite}/vehiculeAModifier/api/${idVehiAModifier}`);
   }
   /*DDDD de CRUD */
   deleteVehicule(idCondASupp: number): Observable<Vehicule[]>{
-    return this.http.get<Vehicule[]>('${this.urlSite}/pageVehicule/api');
+    return this.http.get<Vehicule[]>(`${this.urlSite}/pageVehicule/api`);
   }
 
 }

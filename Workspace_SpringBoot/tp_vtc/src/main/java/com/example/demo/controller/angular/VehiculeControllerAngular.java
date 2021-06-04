@@ -41,11 +41,10 @@ public class VehiculeControllerAngular {
 	}
 	
 	//UUUU CRUD
-	@GetMapping("/updateVehicule/api/{id}")
-	public String ReadUpdate(@PathVariable(value="id") Long id, Model model) {
-		model.addAttribute("allVehicules", vehiculeRepository.findAll());
-		model.addAttribute("vehiculeAModif", vehiculeRepository.findById(id).get());
-		return "vehicule/vehicule";
+	@GetMapping("/vehiculeAModifier/api/{id}")
+	@CrossOrigin(origins = "http://localhost:4200/")
+	public Vehicule vehiculeAModifier(@PathVariable(value="id") Long id) {
+		return vehiculeRepository.findById(id).get();
 	}
 	@PostMapping("/updateVehicule/api")
 	public String CreateUpdate(@Validated Vehicule vehicule, BindingResult bindingResult) {

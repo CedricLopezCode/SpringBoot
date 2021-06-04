@@ -31,8 +31,13 @@ public class ConducteurControllerAngular {
 	public List<Conducteur> listeConducteurAngular() {
 		return conducteurRepository.findAll();
 	}
-
-		
+	//UUUU CRUD
+	@GetMapping("/recupCondAModif/api/{id}") //Version Angular
+	@CrossOrigin(origins = "http://localhost:4200/")
+	public Conducteur recupCondAModif(@PathVariable(value="id")Long id) {
+		return conducteurRepository.findById(id).get();
+	}
+	/*
 	//CCCC CRUD
 	@PostMapping("/ajoutConducteur/api")
 	public String ajouterConducteur(@Validated Conducteur conducteur, BindingResult bindingResult) {
@@ -41,17 +46,7 @@ public class ConducteurControllerAngular {
 		return "redirect:/pageConducteur";
 	}
 	
-	//UUUU CRUD
-	@GetMapping("/updateConducteur/api/{id}")
-	public String ReadUpdate(@PathVariable(value= "id") Long id, Model model) {
-		//----------------------------------------
-		System.out.println(conducteurRepository.findById(id));
-		System.out.println(conducteurRepository.findById(id).get());
-		//----------------------------------------
-		model.addAttribute("allConducteurs", conducteurRepository.findAll());
-		model.addAttribute("conducteurAModif", conducteurRepository.findById(id).get());
-		return "conducteur/conducteur";
-	}
+	
 	@PostMapping("/updateConducteur/api")
 	public String CreateUpdate(@Validated Conducteur conducteur, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()){return "home";}
@@ -66,7 +61,7 @@ public class ConducteurControllerAngular {
 		conducteurRepository.deleteById(id);
 		return "redirect:/pageConducteur";
 	}
-	/*
+	
 	//Version Camille Verifie l'existence avant et delete brut
 	@GetMapping("/deleteC/{id}")
     public String delete(@PathVariable(value = "id") Long conducteurId) throws AttributeNotFoundException {
