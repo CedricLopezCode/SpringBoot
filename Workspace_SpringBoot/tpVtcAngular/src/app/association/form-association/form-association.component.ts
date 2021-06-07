@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Association } from 'src/app/model/association';
 import { Conducteur } from 'src/app/model/conducteur';
 import { Vehicule } from 'src/app/model/vehicule';
 import { AssociationService } from 'src/app/service/association.service';
@@ -10,6 +11,7 @@ import { AssociationService } from 'src/app/service/association.service';
 })
 export class FormAssociationComponent implements OnInit {
 
+  assocAAjouter = new Association();
   listeCondSansVehi!: Conducteur[];
   listeVehiSansCond!: Vehicule[];
 
@@ -21,6 +23,14 @@ export class FormAssociationComponent implements OnInit {
     );
     this.serviceAssoc.listeVehiculeSansConducteur().subscribe(
       data => {this.listeVehiSansCond = data;}
+    );
+  }
+  onSubmit(): void {
+    this.serviceAssoc.createAssociation(this.assocAAjouter).subscribe(
+      data => {
+        console.log(data);
+        this.assocAAjouter = new Association();
+      }
     );
   }
 

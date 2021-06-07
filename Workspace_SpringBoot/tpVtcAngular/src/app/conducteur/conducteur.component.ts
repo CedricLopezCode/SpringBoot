@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConducteurComponent implements OnInit {
 
-  modifCondEnCours = false;
+  modifCondEnCours = true;
   
   constructor() { }
 
   ngOnInit(): void {
    
   }
+  
 
 }

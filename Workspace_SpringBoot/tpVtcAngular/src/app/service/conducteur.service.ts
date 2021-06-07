@@ -17,8 +17,8 @@ export class ConducteurService {
     return this.http.get<Conducteur[]>(`${this.urlSite}/listeAllConducteurs/api`);
   }
   /*CCCC de CRUD */
-  createConducteur(condAAjouter: Conducteur): Observable<Conducteur[]>{
-    return this.http.get<Conducteur[]>(`${this.urlSite}/pageConducteur/api`);
+  createConducteur(condAAjouter: object): Observable<object>{
+    return this.http.post(`${this.urlSite}/ajoutConducteur/api`, condAAjouter);
   }
   /*UUUU de CRUD */
   recupCondAModif(idCondAModifier: number): Observable<Conducteur>{

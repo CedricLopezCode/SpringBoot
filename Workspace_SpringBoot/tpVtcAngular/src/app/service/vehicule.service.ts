@@ -17,8 +17,10 @@ export class VehiculeService {
     return this.http.get<Vehicule[]>(`${this.urlSite}/listeAllVehicules/api`);
   }
   /*CCCC de CRUD */
-  createVehicule(condAAjouter: Vehicule): Observable<Vehicule[]>{
-    return this.http.get<Vehicule[]>(`${this.urlSite}/pageVehicule/api`);
+  createVehicule(vehiAAjouter: object): Observable<object>{
+    console.log(vehiAAjouter);
+    return this.http.post(`${this.urlSite}/ajoutVehicule/api`, vehiAAjouter);
+
   }
   /*UUUU de CRUD */
   recupVehiculeAModifier(idVehiAModifier: number): Observable<Vehicule>{

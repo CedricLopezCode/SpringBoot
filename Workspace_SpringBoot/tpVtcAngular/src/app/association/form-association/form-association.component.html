@@ -1,16 +1,16 @@
 <!-- FORM VIDE AJOUT -->
 <div>
-	<form class="formulaire flex-col-center" method="post" action="ajoutAssociation" object="assocAModif">
+	<form class="formulaire flex-col-center" (ngSubmit)="onSubmit()">
 		<div class="flex-row">
 			<div class="flex-col">
 				<label class="form-label">Conducteur</label>
-			 	<select class="form-select" aria-label="Default select example" formControlName="conducteur">
+			 	 <select [(ngModel)]="assocAAjouter.conducteur" class="form-select" aria-label="Default select example" name="conducteur">
 				  	<option *ngFor="let condSansVehi of listeCondSansVehi" value="CondSansVehi.id">{{condSansVehi.nom}} {{condSansVehi.prenom}}</option>
 				</select>
 			</div>
 			<div class="flex-col">
 				<label class="form-label">Vehicule</label>
-				 <select class="form-select" aria-label="Default select example" formControlName="vehicule">
+				<select [(ngModel)]="assocAAjouter.vehicule" class="form-select" aria-label="Default select example" name="vehicule">
 				  	<option *ngFor="let vehiSansCond of listeVehiSansCond" value="vehicule.id">{{vehiSansCond.marque}} {{vehiSansCond.modele}} {{vehiSansCond.couleur}} {{vehiSansCond.immatriculation}}</option>
 				</select>
 			</div>

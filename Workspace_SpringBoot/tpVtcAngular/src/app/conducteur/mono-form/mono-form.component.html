@@ -1,0 +1,32 @@
+<!-- FORM DYNAMIQUE-->
+<div  object="conducteurAModif">
+	<form class="formulaire flex-col-center" method="post" action="" object="conducteurAModif">
+        <div *ngIf="1 == 1">
+		    <input type="hidden" class="form-control" formControlName="id"  [defaultValue]="CondAModifier.id">
+         </div>
+		<div class="mb-3">
+			<label class="form-label">Nom</label>
+			<input type="text" class="form-control" formControlName="nom" [defaultValue]="CondAModifier.nom">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Prenom</label>
+			<input type="text" class="form-control"  formControlName="prenom" [defaultValue]="CondAModifier.prenom">
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+</div>
+<!-- FORM PRE REMPLI -->
+<div  object="conducteurAModif">
+	<form class="formulaire flex-col-center" method="post" action="" object="conducteurAModif">
+		<input type="hidden" class="form-control" formControlName="id" [defaultValue]="CondAModifier.id">
+		<div class="mb-3">
+			<label class="form-label">Nom</label>
+			<input type="text" class="form-control" formControlName="nom" [value]="CondAModifier.nom">
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Prenom</label>
+			<input type="text" class="form-control"  formControlName="prenom" [defaultValue]="CondAModifier.prenom">
+		</div>
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+</div>

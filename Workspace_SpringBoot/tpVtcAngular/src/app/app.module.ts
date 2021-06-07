@@ -22,6 +22,9 @@ import { ListeCondssVehiComponent } from './association/liste-condss-vehi/liste-
 import { ListeVehissCondComponent } from './association/liste-vehiss-cond/liste-vehiss-cond.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MonoFormComponent } from './conducteur/mono-form/mono-form.component';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -43,11 +46,14 @@ import { HttpClientModule } from '@angular/common/http';
     FormModifAssociationComponent,
     ListeCondssVehiComponent,
     ListeVehissCondComponent,
-    FormCondComponent
+    FormCondComponent,
+    MonoFormComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
 
 <!-- FORM VIDE AJOUT -->
-<div  object="conducteurAModif">
-	<form class="formulaire flex-col-center" method="post" action="ajoutConducteur" object="conducteurAModif">
-		<input type="hidden" class="form-control" name="id">
+<div>
+	<form class="formulaire flex-col-center" (ngSubmit) = "onSubmit()">
+		<!-- <input type="hidden" class="form-control" name="id"> -->
 		<div class="mb-3">
 			<label class="form-label">Nom</label>
-			<input type="text" class="form-control" name="nom">
+			<input [(ngModel)]="condAAjouter.nom" type="text" class="form-control" name="nom">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Prenom</label>
-			<input type="text" class="form-control"  name="prenom">
+			<input [(ngModel)]="condAAjouter.prenom" type="text" class="form-control"  name="prenom">
 		</div>
 		<button type="submit" class="btn btn-primary">Ajouter</button>
 	</form>

@@ -25,8 +25,9 @@ export class AssociationService {
     return this.http.get<Vehicule[]>(`${this.urlSite}/listeVehiculeSansConducteur/api`);
   }
   /*CCCC de CRUD */
-  createAssociation(condAAjouter: Association): Observable<Association[]>{
-    return this.http.get<Association[]>(`${this.urlSite}/pageAssociation/api`);
+  createAssociation(assocAAjouter: object): Observable<object>{
+    console.log(assocAAjouter);
+    return this.http.post(`${this.urlSite}/ajoutAssociation/api`, assocAAjouter);
   }
   /*UUUU de CRUD */
   updateAssociation(idCondAModifier: number): Observable<Association[]>{

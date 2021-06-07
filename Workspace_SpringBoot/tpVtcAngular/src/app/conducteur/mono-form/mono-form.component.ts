@@ -3,11 +3,11 @@ import { Conducteur } from 'src/app/model/conducteur';
 import { ConducteurService } from 'src/app/service/conducteur.service';
 
 @Component({
-  selector: 'app-form-modif-cond',
-  templateUrl: './form-modif-cond.component.html',
-  styleUrls: ['./form-modif-cond.component.css']
+  selector: 'app-mono-form',
+  templateUrl: './mono-form.component.html',
+  styleUrls: ['./mono-form.component.css']
 })
-export class FormModifCondComponent implements OnInit {
+export class MonoFormComponent implements OnInit {
 
   CondAModifier!: Conducteur
 
@@ -21,17 +21,7 @@ export class FormModifCondComponent implements OnInit {
         this.CondAModifier = data;
       }
     );
-  }
 
-  onSubmit(): void{
-    this.serviceCond.createConducteur(this.CondAModifier).subscribe(
-      data => {
-        console.log(data);
-        this.CondAModifier = new Conducteur();
-        window.location.reload();
-      }
-    );
   }
 
 }
-

@@ -1,14 +1,14 @@
 <!-- FORM PRE REMPLI -->
-<div  object="conducteurAModif">
-	<form class="formulaire flex-col-center" method="post" action="" object="conducteurAModif">
-		<input type="hidden" class="form-control" formControlName="id" [defaultValue]="CondAModifier.id">
+<div>
+	<form class="formulaire flex-col-center" (ngSubmit) = "onSubmit()">
+		<input [(ngModel)]="CondAModifier.id" type="hidden" class="form-control" name="id" [defaultValue]="CondAModifier.id">
 		<div class="mb-3">
 			<label class="form-label">Nom</label>
-			<input type="text" class="form-control" formControlName="nom" [defaultValue]="CondAModifier.nom">
+			<input [(ngModel)]="CondAModifier.nom" class="form-control" name="nom" [defaultValue]="CondAModifier.nom">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Prenom</label>
-			<input type="text" class="form-control"  formControlName="prenom" [defaultValue]="CondAModifier.prenom">
+			<input [(ngModel)]="CondAModifier.prenom" class="form-control"  name="prenom" [defaultValue]="CondAModifier.prenom">
 		</div>
 		<button type="submit" class="btn btn-primary">Ajouter</button>
 	</form>

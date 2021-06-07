@@ -1,22 +1,21 @@
 <!-- FORM VIDE AJOUT -->
-<div object="vehiAModif" >
-	<form class="formulaire flex-col-center" method="post" action="ajoutVehicule">
-		<input type="hidden" class="form-control" name="id">
+<div >
+	<form (ngSubmit) = "onSubmit()" class="formulaire flex-col-center">
 		<div class="mb-3">
 			<label class="form-label">Marque</label>
-			<input type="text" class="form-control" name="marque">
+			<input [(ngModel)]="vehiculeAAjouter.marque" type="text" class="form-control" name="marque">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Modele</label>
-			<input type="text" class="form-control"  name="modele">
-		</div>
+			<input [(ngModel)]="vehiculeAAjouter.modele" type="text" class="form-control"  name="modele">
+		</div> 
 		<div class="mb-3">
 			<label class="form-label">Couleur</label>
-			<input type="text" class="form-control" name="couleur">
+			<input [(ngModel)]="vehiculeAAjouter.couleur" type="text" class="form-control" name="couleur">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Immatriculation</label>
-			<input type="text" class="form-control"  name="immatriculation">
+			<input [(ngModel)]="vehiculeAAjouter.immatriculation" type="text" class="form-control"  name="immatriculation">
 		</div>
 		<button type="submit" class="btn btn-primary">Ajouter</button>
 	</form>
